@@ -42,6 +42,10 @@
                                                 <input type="number" name="tahun_terbit" class="w-full border p-2"
                                                     required>
                                             </div>
+                                            <div class="mb-3">
+                                                <table for="foto" class="form-label">Foto Buku</label>
+                                                    <input type="file" name="foto" accept="image/" class="form-control"required>
+                                                </div>
 
                                             <div class="mb-4">
                                                 <label for="kategori_id"
@@ -52,8 +56,6 @@
                                                     @endforeach
                                                 </select>
                                             </div>
-
-
                                             <button type="submit"
                                                 class="bg-blue-500 text-black border py-2 px-4 rounded">Simpan</button>
                                         </form>

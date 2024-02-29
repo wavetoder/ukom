@@ -135,7 +135,7 @@
                 </li>
                 <li class="menu-item active">
                   <a href="{{ route('kategori') }}" class="menu-link">
-                    <div data-i18n="Analytics">Data Kategori</div>
+                    <div data-i18n="Analytics"><i class="fa-solid fa-bars"></i>Data Kategori</div>
                   </a>
                 </li>
                 <li class="menu-item">
