@@ -23,7 +23,7 @@
                                     <th>Pengarang</th>
                                     <th>Penerbit</th>
                                     <th>Tahun Terbit</th>
-                                    
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,11 +43,12 @@
                                                 <button type="submit" class="btn btn-danger">hapus<i class="fa-solid fa-trash"></i>                                              
                                                 </button>
 
-                                                <a class="btn btn-primary" href="{{ route('buku.edit', $b->id) }}">
-                                                   edit <i class="fa fa-file-pen"></i></a>
-                                    </form>
+                                                <a class="btn btn-primary" href="{{ route('buku.edit', $b->id) }}">edit
+                                                    <i class="fa fa-file-pen"></i></a>
+                                                </form>
                                         </td>
                                     </tr>
+                                
                                 @empty
                                     <tr>
                                         <td colspan="6" class="text-center">Tidak ada data buku.</td>

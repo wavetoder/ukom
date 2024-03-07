@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Buku;
 use App\Models\Kategori;
 use App\Models\kategoribukurelasi;
+use Illuminate\Support\Facades\Storage;
 
 class BukuController extends Controller
 {
@@ -37,6 +38,28 @@ class BukuController extends Controller
             'penerbit' => $request->penerbit,
             'tahun_terbit' => $request->tahun_terbit,
         ]);
+
+        $buku = Buku::findOrFail($id);
+
+        if ($request->hasFile('foto')) {
+            $request->validate([
+                'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+
+            // Hapus foto lama
+            Storage::disk('public')->delete($buku->foto);
+
+            // Simpan foto baru
+            $fotoPath = $request->file('foto')->store('buku_images', 'public');
+            $buku->foto = $fotoPath;
+        }
+
+        $buku->judul = $request->judul;
+        $buku->penulis = $request->penulis;
+        $buku->penerbit = $request->penerbit;
+        $buku->tahun_terbit = $request->tahun_terbit;
+        $buku->save();
+        
         return redirect('/buku');
     }
     public function create()

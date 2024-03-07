@@ -152,7 +152,13 @@
                     <div class="badge bg-label-primary fs-tiny rounded-pill ms-auto">Pro</div>
                   </a>
                 </li>
-             
+                @role('user')
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('peminjaman.user')}}">
+                        <i class="fas fa-fw fa-plus"></i>
+                        <span>Data Peminjaman</span></a>
+                </li>
+                @endrole
 
               <ul class="menu-sub">
                 <li class="menu-item">
