@@ -49,4 +49,8 @@ Route::middleware('auth', 'role:admin')->group(function () {
     Route::get('report', [PeminjamanController::class, 'print'])->name('print');
 });
 
+//user
+Route::get('/user/peminjaman', [PeminjamanController::class, 'userPeminjaman'])->name('peminjaman.user')
+->middleware(['auth', 'role:user']);
+
 require __DIR__.'/auth.php';

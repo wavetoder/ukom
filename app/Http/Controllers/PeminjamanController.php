@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Peminjaman;
 use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Auth;
 
 class PeminjamanController extends Controller
 {
@@ -60,6 +61,16 @@ class PeminjamanController extends Controller
         $pdf = PDF::loadView('peminjaman.format', $data)
         ->setPaper('a4');
         return $pdf->download('laporan.pdf');
+    }
+    public function userPeminjaman()
+    {
+        $userId = Auth::id();
+
+        $peminjaman = Peminjaman::with('user', 'buku')
+            ->where('user_id', $userId)
+            ->get();
+
+        return view('peminjaman.user_index', compact('peminjaman'));
     }
 
 }

@@ -117,6 +117,7 @@
 
           <ul class="menu-inner py-1">
             <!-- Dashboards -->
+            @role('admin')
             <li class="menu-item active open">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
@@ -152,6 +153,7 @@
                     <div class="badge bg-label-primary fs-tiny rounded-pill ms-auto">Pro</div>
                   </a>
                 </li>
+                @endrole
                 @role('user')
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('peminjaman.user')}}">
@@ -234,20 +236,9 @@
               </ul>
             </li>
 
-            <li class="menu-header small text-uppercase">
-              <span class="menu-header-text">Apps &amp; Pages</span>
-            </li>
+            
             <!-- Apps -->
             <li class="menu-item">
-              <a
-                href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/html/vertical-menu-template/app-calendar.html"
-                target="_blank"
-                class="menu-link">
-                <i class="menu-icon tf-icons bx bx-calendar"></i>
-                <div data-i18n="Calendar">Calendar</div>
-                <div class="badge bg-label-primary fs-tiny rounded-pill ms-auto">Pro</div>
-              </a>
-            </li>
             <!-- Form Validation -->
           </ul>
         </aside>
@@ -345,11 +336,17 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="javascript:void(0);">
-                        <i class="bx bx-power-off me-2"></i>
-                        <span class="align-middle">Log Out</span>
+                      <a class="dropdown-item" href="{{ route('logout') }}"
+                          onclick="event.preventDefault();
+                                   document.getElementById('logout-form').submit();">
+                          {{ __('Logout') }}
                       </a>
-                    </li>
+
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                          class="d-none">
+                          @csrf
+                      </form>
+                  </li>
                   </ul>
                 </li>
                 <!--/ User -->
