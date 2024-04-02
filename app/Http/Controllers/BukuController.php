@@ -100,4 +100,14 @@ class BukuController extends Controller
         return redirect('/buku')->with('success', 'Buku berhasil ditambahkan!');
     }
 
+    public function welcome(){
+        $buku = Buku::all();
+        return view('welcome', ['buku' => $buku]);
+    }
+
+    public function detail($id){
+    $buku = Buku::find($id);
+    return view('buku.detail', ['buku' => $buku]);
+    }
+
 }

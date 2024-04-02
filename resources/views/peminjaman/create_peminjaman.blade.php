@@ -36,12 +36,12 @@
 
                             <div class="mb-3">
                                 <label for="tanggal_peminjaman" class="form-label">Tanggal Peminjaman:</label>
-                                <input type="date" required name="tanggal_peminjaman" id="tanggal_peminjaman" class="form-control">
+                                <input type="date" required name="tanggal_peminjaman" id="tanggal_peminjaman" class="form-control" value="{{ date('Y-m-d') }}" readonly>
                             </div>
 
                             <div class="mb-3">
                                 <label for="tanggal_pengembalian" class="form-label">Tanggal Pengembalian:</label>
-                                <input type="date" required name="tanggal_pengembalian" id="tanggal_pengembalian" class="form-control">
+                                <input type="date" required name="tanggal_pengembalian" id="tanggal_pengembalian" class="form-control" value="{{ \Carbon\Carbon::parse(date('Y-m-d'))->addDays(5)->format('Y-m-d') }}">
                             </div>
 
                             <button type="submit" class="btn btn-primary">Simpan</button>
