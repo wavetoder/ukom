@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Peminjaman;
 use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Auth;
+use \Illuminate\Support\Facades\Auth;
 
 class PeminjamanController extends Controller
 {
@@ -82,7 +82,15 @@ class PeminjamanController extends Controller
             ->where('user_id', $userId)
             ->get();
 
-        return view('peminjaman.user_index', compact('peminjaman'));
+        return view('peminjaman.peminjam', compact('peminjaman'));
     }
+    public function bayarDenda($id){
+        $peminjaman = Peminjaman::findOrFail($id);
+        $peminjaman->status = 'Dikembalikan';
+        $peminjaman->sekarang = now();
+        $peminjaman->save();
+ 
+        return redirect()->route('peminjaman.index')->with('success', 'Denda berhasil dibayar');
+}
 
 }

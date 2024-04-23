@@ -18,6 +18,7 @@
                             <thead>
                                 <tr>
                                     <th class="px-4 py-2">Nama Kategori</th>
+                                    <th class="px-4 py-2">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
