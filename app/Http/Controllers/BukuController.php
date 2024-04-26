@@ -60,7 +60,7 @@ class BukuController extends Controller
         $buku->tahun_terbit = $request->tahun_terbit;
         $buku->save();
         
-        return redirect('/buku');
+        return redirect('/buku')->with('success', 'Buku Berhasil DiEdit');
     }
     public function create()
     {
@@ -70,7 +70,7 @@ class BukuController extends Controller
     public function hapus($id)
     {
         Buku::find($id)->delete();
-        return redirect('/buku');
+        return redirect('/buku')->with('success', 'Buku Berhasil Dihapus');
     }
 
     public function store(Request $request)

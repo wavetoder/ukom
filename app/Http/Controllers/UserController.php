@@ -23,7 +23,7 @@ class UserController extends Controller
     public function hapus($id)
     {
         user::find($id)->delete();
-        return redirect('/user');
+        return redirect('/user')->with('success', 'User Berhasil dihapus');
     
     }
 
@@ -44,7 +44,7 @@ class UserController extends Controller
 
     $user->assignRole($request->roles);
 
-    return redirect()->route('users.index')->with('succes', 'user berhasil ditambahkan');
+    return redirect('/user')->with('success', 'User Berhasil Ditambahkan');
     }
 
 

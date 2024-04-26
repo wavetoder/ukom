@@ -6,7 +6,11 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">List Buku</div>
-
+                    @if(session('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('success') }}
+                    </div>
+                    @endif
                     <div class="card-body">
                         <div class="mb-4">
                             <a href="{{ route('buku.create') }}" class="btn btn-primary">

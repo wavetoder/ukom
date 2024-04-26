@@ -19,6 +19,7 @@
                                             <th>No</th>
                                             <th>Judul Buku</th>
                                             <th>Tanggal Peminjaman</th>
+                                            <th>Tanggal Seharusnya Dikembalikan</th>
                                             <th>Tanggal Pengembalian</th>
                                             
                                         </tr>
@@ -30,6 +31,7 @@
                                                 <td>{{ $pinjam->buku->judul }}</td>
                                                 <td>{{ $pinjam->tanggal_peminjaman }}</td>
                                                 <td>{{ $pinjam->tanggal_pengembalian }}</td>
+                                                <td>{{ $pinjam->sekarang }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>

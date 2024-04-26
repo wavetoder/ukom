@@ -38,7 +38,7 @@ class PeminjamanController extends Controller
             'tanggal_pengembalian'=>$request->tanggal_pengembalian,
             'status' => 'Dipinjam'
         ]);
-        return redirect ('/peminjaman');
+        return redirect()->route('peminjaman.index')->with('success', 'Buku berhasil dipinjam');;
     }
     public function kembalikanBuku($id)
     {
@@ -55,6 +55,7 @@ class PeminjamanController extends Controller
         } else {
             // Jika tidak, statusnya 'Dikembalikan'
             $peminjaman->status = 'Dikembalikan';
+            $peminjaman->sekarang = now();
         }
  
         $peminjaman->save();

@@ -1,9 +1,14 @@
 @extends('layouts.template')
 
 @section('content')
-    <div class="py-12">
+    <div class="py-4">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                @if(session('success'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('success') }}
+                        </div>
+                        @endif
                 <div class="p-6 text-gray-900">
                     <div class="mb-4 d-flex justify-content-between">
                         <a href="{{ route('peminjaman.tambah') }}" class="bg-blue-500 hover:bg-blue-700 text-white border font-bold py-2 px-4 rounded btn btn-primary  ">
@@ -34,7 +39,7 @@
                                     <td class="px-4 py-2">{{ $p->buku->judul }}</td>
                                     <td class="px-4 py-2">{{ \Carbon\Carbon::parse($p->tanggal_peminjaman)->format('d-M-Y') }}</td>
                                     <td class="px-4 py-2">{{ $p->tanggal_pengembalian ? \Carbon\Carbon::parse($p->tanggal_pengembalian)->format('d-M-Y') : 'Belum Dikembalikan' }}</td>
-                                    <td class="px-4 py-2">{{ $p->sekarang ? \Carbon\Carbon::parse($p->sekarang)->format('d-M-Y') : '' }}</td>
+                                    <td class="px-4 py-2">{{ $p->sekarang }}</td>
 
                                     
                                     <td class="px-4 py-2">
